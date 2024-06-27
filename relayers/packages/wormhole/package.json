@@ -1,0 +1,22 @@
+{
+  "name": "@warden/wormhole-relayer",
+  "version": "1.0.0",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --build --clean && tsc --build",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@wormhole-foundation/relayer-engine": "^0.3.2",
+    "dotenv": "^16.4.5",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
