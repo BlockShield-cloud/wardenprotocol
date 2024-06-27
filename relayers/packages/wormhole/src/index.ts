@@ -13,6 +13,8 @@ import {
 import 'dotenv/config';
 import winston from 'winston';
 
+import { config } from './config/schema.js';
+
 // export const WORMHOLE_CONTRACTS = CONTRACTS['TESTNET'];
 // export const CORE_BRIDGE_PID = new PublicKey(WORMHOLE_CONTRACTS.solana.core);
 
@@ -41,15 +43,21 @@ export const rootLogger = winston.createLogger({
 });
 
 export async function main() {
-  const app = new RelayerApp<StandardRelayerContext>(Environment.TESTNET);
+  const app = new RelayerApp<StandardRelayerContext>(config.ENVIRONMENT);
 
   const store = new RedisStorage({
-    attempts: 3,
-    namespace: 'artur-local',
-    queueName: 'relays',
+    attempts: config.REDIS_ATTEMPTS,
+    namespace: config.REDIS_NAMESPACE,
+    queueName: config.REDIS_QUEUE,
+    redis: {
+      host: config.REDIS_HOST,
+      port: config.REDIS_PORT,
+      username: config.REDIS_USERNAME,
+      password: config.REDIS_PASSWORD,
+    },
   });
 
-  app.spy('localhost:7073');
+  app.spy(config.SPY_URL);
   app.useStorage(store);
   app.logger(rootLogger);
 

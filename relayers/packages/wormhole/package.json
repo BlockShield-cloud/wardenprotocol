@@ -13,8 +13,9 @@
   },
   "dependencies": {
     "@wormhole-foundation/relayer-engine": "^0.3.2",
+    "winston": "^3.13.0",
     "dotenv": "^16.4.5",
-    "winston": "^3.13.0"
+    "env-schema": "^5.2.1"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
