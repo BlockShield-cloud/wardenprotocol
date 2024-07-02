@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "@wormhole-foundation/relayer-engine": "^0.3.2",
-    "winston": "^3.13.0",
+    "@wormhole-foundation/sdk": "^0.7.0",
+    "rpc-websockets": "7.10.0",
     "dotenv": "^16.4.5",
-    "env-schema": "^5.2.1"
+    "env-schema": "^5.2.1",
+    "winston": "^3.13.0"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
