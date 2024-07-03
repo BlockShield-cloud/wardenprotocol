@@ -46,7 +46,7 @@ async function feedEm(app: RelayerApp<StandardRelayerContext>) {
 }
 
 export const rootLogger = winston.createLogger({
-  level: 'info',
+  level: 'debug',
   transports: [new winston.transports.Console()],
   format: winston.format.combine(
     winston.format.colorize(),

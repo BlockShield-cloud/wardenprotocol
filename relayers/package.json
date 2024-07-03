@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "tsc --build --force --verbose",
+    "build": "tsc --build --clean && tsc --build --force --verbose",
     "wormhole-relayer": "yarn workspace @warden/wormhole-relayer start"
   },
   "devDependencies": {
