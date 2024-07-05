@@ -1,32 +1,38 @@
-use bindings::query::AddressType;
 use cosmwasm_schema::{cw_serde, QueryResponses};
-use cosmwasm_std::{Binary, PageRequest};
-use schemars::JsonSchema;
-use serde::{Deserialize, Serialize};
+use cosmwasm_std::Binary;
 
 #[cw_serde]
 pub struct InstantiateMsg {
-    pub wormhole_contract: String,
+    pub admin: String,
+    pub wormhole_core: String,
 }
 
 #[cw_serde]
+#[derive(QueryResponses)]
 pub enum QueryMsg {
-    VerifyVAA { vaa: Binary, block_time: u64 },
+    #[returns(ParsedVAA)]
+    VerifyVAA { vaa: Binary },
 }
 
 #[cw_serde]
 pub enum ExecuteMsg {
-    SendMessage { message: Binary, nonce: u32 },
-
+    SetChainEmitter { chain_id: u16, emitter: Binary },
+    PostMessage { message: Binary, nonce: u32 },
     ReceiveMessage { vaa: Binary },
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
-pub struct Message {
-    pub message: Binary,
+#[cw_serde]
+pub enum WormholeQueryMsg {
+    VerifyVAA { vaa: Binary, block_time: u64 },
 }
 
-#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[cw_serde]
+pub enum WormholeExecuteMsg {
+    SubmitVAA { vaa: Binary },
+    PostMessage { message: Binary, nonce: u32 },
+}
+
+#[cw_serde]
 pub struct ParsedVAA {
     pub version: u8,
     pub guardian_set_index: u32,

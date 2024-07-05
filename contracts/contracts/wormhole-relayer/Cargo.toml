@@ -16,18 +16,14 @@ library = []
 test-utils = []
 
 [dependencies]
-borsh = { workspace = true }
 cosmwasm-std = { workspace = true }
 cosmwasm-schema = { workspace = true }
 cw2 = { workspace = true }
 schemars = { workspace = true }
 serde = { workspace = true }
 thiserror = { workspace = true }
-wormhole-vaas-serde = { workspace = true, features = ["schemars"] }
-wormhole-sdk = { workspace = true } 
-cw-wormhole = { workspace = true }
+cw-controllers = { workspace = true }
 cw-storage-plus = { workspace = true }
-bindings = { workspace = true }
 
 [dev-dependencies]
 anyhow = "1"

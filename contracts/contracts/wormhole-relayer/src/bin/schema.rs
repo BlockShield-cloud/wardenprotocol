@@ -1,6 +1,6 @@
 use cosmwasm_schema::write_api;
 
-use sample::msg::{ExecuteMsg, QueryMsg};
+use wormhole_relayer::msg::{ExecuteMsg, QueryMsg};
 
 fn main() {
     write_api! {
